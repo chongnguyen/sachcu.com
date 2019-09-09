@@ -1,0 +1,20 @@
+extends ../index
+
+block sidebar
+
+block main
+    .login-warraper.border.m-auto
+        h5.text-primary &Dstrok;&abreve;ng nh&#x1EAD;p
+        form(method='POST')
+            .form-group
+                label(for='exampleInputEmail1') &Dstrok;&#x1ECB;a ch&#x1EC9; Email:
+                input#exampleInputEmail1.form-control(type='email' name='email' placeholder='Email')
+            .form-group
+                label(for='exampleInputPassword1') M&#x1EAD;t kh&#x1EA9;u:
+                input#exampleInputPassword1.form-control(type='password' name='pass' placeholder='Password')
+                a.mt-2.ml-1.d-block(href="/auth/register") Đăng ký &rarr;
+            .d-flex.justify-content-center.mt-3
+                button.btn.btn-primary(type='submit') &Dstrok;&abreve;ng nh&#x1EAD;p
+
+block footer
+

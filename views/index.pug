@@ -1,0 +1,102 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  meta(http-equiv='X-UA-Compatible', content='ie=edge')
+  script(src='https://kit.fontawesome.com/b32e5ce0da.js')
+  link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T', crossorigin='anonymous')
+  link(rel='stylesheet', href='/css/sachcu.css')
+  title Sach Cu
+// Header
+.d-flex.justify-content-between.align-items-center.header.p-1.border-bottom
+  .logo
+    a(href='/') SachCu.Com
+  .search-bar
+    form(action='/search' method="get")
+      .form-group.d-flex.m-0
+        input.form-control(type='text', aria-describedby='emailHelp', placeholder='Search' name='q')
+        input.btn.btn-danger.ml-2(type="submit", value="Search")
+  .login.d-flex.align-items-center
+    a.mr-2.d-flex.align-items-center.user-container(href='/users')
+      if(!userId)
+        i.fas.fa-user-circle.user.mr-2
+        |  &Dstrok;&abreve;ng Nh&#x1EAD;p
+      else
+        i.fas.fa-user-circle.user.mr-2
+        |  Quản lý
+    .cart.p-3
+      a(href='#')
+        i.fas.fa-cart-arrow-down
+.d-flex.body-web.row
+  // Left
+  block sidebar
+    .body-left.col-sm-3
+      h2.bg-danger.text-white.p-3 DANH MỤC SÁCH
+      ul.list-group.danhmucsach
+        li.list-group-item
+          a#btn-sachvn S&aacute;ch Vi&#x1EC7;t Nam
+        li.list-group-item
+          a#btn-sachnn S&aacute;ch N&#x1B0;&#x1EDB;c Ngo&agrave;i
+        li.list-group-item
+          a#btn-sachcn S&aacute;ch Chuy&ecirc;n Ng&agrave;nh
+        li.list-group-item
+          a#btn-truyendai Truy&#x1EC7;n D&agrave;i
+        li.list-group-item
+          a#btn-truyenngan Truy&#x1EC7;n Ng&#x1EAF;n
+        li.list-group-item
+          a#btn-tieuthuyet Ti&#x1EC3;u Thuy&#x1EBF;t
+  // Right
+  block main
+    .body-right.col-sm-9.d-flex.pt-0
+      h2.bg-danger.text-white.p-3.w-100.text-center SÁCH BÁN CHẠY
+      each product in products
+        .card-sach
+          img.card-img-top.p-1(src= product.image, alt='...')
+          .card-body
+            h5.card-title= product.name
+            p= product.description
+            .d-flex
+              .gia-cu 900.000&dstrok;
+              .gia-moi.ml-3 #{product.price / 1000}&dstrok; 
+            .d-flex.justify-content-between.align-items-center.mt-
+              a.btn.btn-primary(href='#') Mua
+              .rate
+                i.fas.fa-star
+                i.fas.fa-star
+                i.fas.fa-star
+                i.fas.fa-star
+                i.fas.fa-star-half-alt
+
+      nav.mt-3.p-3.w-100(aria-label='Page navigation example')
+        ul.pagination.justify-content-end
+          if(active > 1)
+            li.page-item
+              a.page-link(href='?page=' + (active - 1), aria-label='Previous')
+                span(aria-hidden='true') &laquo;
+          else
+            li.page-item.disabled
+              a.page-link(href='?page=' + (active - 1), aria-label='Previous')
+                span(aria-hidden='true') &laquo;
+          each page in pages
+            if(page == active)
+              li.page-item.active
+                a.page-link(href='?page=' + page)= page
+            else
+              li.page-item
+                a.page-link(href='?page=' + page)= page
+          if(active !== max)
+            li.page-item
+              a.page-link(href='?page=' + (active + 1), aria-label='Next')
+                span(aria-hidden='true') &raquo;
+          else
+            li.page-item.disabled
+              a.page-link(href='?page=' + (active + 1), aria-label='Next')
+                span(aria-hidden='true') &raquo;
+  
+  block footer
+    footer.bg-secondary.text-white.p-3.text-center.w-100 Copyright &copy; NguyenChong-AnhQuan 2019
+
+script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
+script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1', crossorigin='anonymous')
+script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM', crossorigin='anonymous')
+script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')

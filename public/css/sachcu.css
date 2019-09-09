@@ -1,0 +1,138 @@
+/* header */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+.header{
+    background-color: #adadad;
+    width: 100%;
+    position:  fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+.logo{
+    width: 25%;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.logo a {
+    color: red;
+    font-size: 3rem;
+    font-weight: 700;
+    text-shadow: 3px 3px 1px #fff, -3px -3px 1px #fff, 
+    3px -3px 1px #fff, -3px 3px 1px #fff;
+}
+
+.logo a:hover,
+.logo a:active {
+    color: red;
+    text-decoration: none;
+}
+
+.user-container:hover{
+    text-decoration: none;
+}
+
+.search-bar{
+    width: 50%;
+}
+
+.login{
+    width: 20%;
+}
+
+.login a{
+    color: #000000;
+}
+
+.login a:hover {
+    color: rgb(1, 1, 175);
+}
+
+.user{
+    font-size: 40px ;
+}
+
+.cart{
+    font-size: 40px;
+}
+
+.cart a:hover {
+    color: rgb(172, 1, 1);
+}
+
+/* body */
+
+.body-web{
+    margin-top: 130px;
+    padding: 0 20px;
+}
+
+.body-web .body-right {
+    background-color: #f5f5f5;
+    padding: 10px 0px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.body-right .card-sach {
+    background-color: #fff;
+    margin: 5px;
+    transition: all .3s;
+    width: 24%;
+}
+
+.card-sach .card-body {
+    padding: 10px;
+}
+
+.card-sach:hover {
+    transform: translateY(-2px);
+    box-shadow: 1px 1px 5px #333;
+    border-radius: 5px;
+}
+
+.body-web .body-left {
+    height: fit-content;
+    position: sticky;
+    top: 100px;
+}
+
+.list-group-item a{
+    cursor: pointer;
+}
+
+.danhmucsach li{
+    font-weight: 500;
+}
+
+.gia-moi{
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.gia-cu{
+    font-size: 1.2rem;
+    text-decoration: line-through;
+    color: gray;
+}
+
+.rate{
+    color: #fcd149;
+}
+
+/* login */
+.login-warraper{
+    width: 30%;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    padding: 50px 20px;
+}
