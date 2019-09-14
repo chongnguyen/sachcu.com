@@ -5,8 +5,9 @@ var productSchema = new mongoose.Schema({
     description: String,
     price: Number,
     image: String,
-    user_Id: String,
-    kind: String
+    userId: String,
+    kind: String,
+    author: String
 });
 
 var Product = mongoose.model('Product', productSchema, 'products');

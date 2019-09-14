@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/doan-mongo', {useNewUrlParser: true});
+mongoose.connect('mongodb://localhost/book-store', {useNewUrlParser: true});
 
 // CONTROLLER
 var controller = require('./controllers/product.controller');
@@ -40,3 +40,7 @@ app.use('/search', searchRouter);
 app.listen(port, function(){
     console.log('listen to port: ' + port)
 })
+
+
+// ======================================================================================= /////////
+// TODO load data genres and save image to file into database and display

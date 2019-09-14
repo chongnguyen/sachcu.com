@@ -9,19 +9,23 @@ module.exports.index = async function(req, res){
         return item.name.toLowerCase().indexOf(q.toLowerCase()) !== -1;
     })
 
-    var x = req.query.page || 1;
-    var n = 24;
-    var start = (x - 1) * n;
-    var end = x * n;
-    var totalPage = matchedProducts.length / n;
-    var temp = 0;
-    var arr = [];
-    for (var i = 0; i < totalPage; i++) {
-        arr.push(++temp);
-    }
+    res.render('index', {
+        products: matchedProducts,
+        pages: [],
+        kinds: []
+    })
+}
+
+module.exports.kind = async function(req, res){
+    var category = req.query.category;
+    var genres = await Product.distinct('kind');
+
+    var products = await Product.find({kind: category});
 
     res.render('index', {
-        products: matchedProducts.slice(start, end),
-        pages: arr
+        products: products,
+        pages: [],
+        kinds: [],
+        kinds: genres
     })
 }

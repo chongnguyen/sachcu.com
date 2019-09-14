@@ -1,6 +1,33 @@
-extends ../index
+extends ../index 
 block sidebar
 
 block main
-    h2 Manager users
-block footer
+    .book-manager
+        h2.bg-danger.text-white.p-3.text-center.w-100 Quản Lý Sách
+        .create-book.m-auto.p-3
+            a.btn.btn-primary(href='/users/create') Thêm sách
+        .table-container
+            table.table
+                thead
+                    tr
+                        th
+                        th(scope='col') Tên sản phẩm
+                        th(scope='col') Tác giả
+                        th(scope='col') Giá
+                        th(scope='col') Chỉnh sửa
+                        th
+                tbody
+                    each product in products
+                        tr
+                            td
+                                .image-container
+                                    img.image(src= product.image alt='sach')
+                            td= product.name
+                            td= product.author
+                            td= product.price
+                            td
+                                a(href='/users/view/' + product.id) eidt &rarr;
+                            td 
+                                a(href='/users/delete/' + product.id).btn.btn-secondary Xóa
+                
+                

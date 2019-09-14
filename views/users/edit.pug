@@ -1,0 +1,37 @@
+extends ../index 
+
+block sidebar
+
+block main 
+    .taosp.mt-5.border.p-3.m-auto
+        h5.text-primary Th&ecirc;m S&#x1EA3;n Ph&#x1EA9;m
+        form(action=('/users/update/' + product.id)  method='post'  enctype="multipart/form-data")
+            .form-group
+                label(for='name') T&ecirc;n s&#x1EA3;n ph&#x1EA9;m
+                input#name.form-control(type='text' aria-describedby='textHelp'
+                 placeholder='Product Name' name='name' value= product.name)
+            .form-group
+                label(for='author') T&aacute;c gi&#x1EA3;
+                input#author.form-control(type='text' aria-describedby='authorlHelp'
+                 placeholder='Author' name='author' value=product.author)
+            .form-group
+                label(for='price') Gi&aacute;
+                input#price.form-control(type='text' aria-describedby='pricelHelp'
+                 placeholder='Price' name='price' value= product.price)
+            .mb-2
+                label Thể Loại
+                select.form-control(name='kind' )
+                    option(selected)= product.kind
+                    option Tiểu Thuyết
+                    option Văn Học Trong Nước
+                    option Văn Học Nước Ngoài
+                    option Phát Triển Bản Thân
+                    option Ngoại Ngữ
+                    option Kinh Tế
+                    option Bán Hàng
+            .form-group
+                label(for='exampleFormControlFile1') H&igrave;nh &#x1EA3;nh
+                input#exampleFormControlFile1.form-control-file(type='file' name='avatar')
+
+            .d-flex.justify-content-center.mt-2
+                button.btn.btn-primary(type='submit') Cập Nhật

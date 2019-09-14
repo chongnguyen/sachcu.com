@@ -136,3 +136,29 @@ html{
     border-radius: 10px;
     padding: 50px 20px;
 }
+
+/* table manager book */
+.table-container, .create-book {
+    margin: 20px;
+}
+
+table{
+    text-align: center;
+}
+
+.image{
+    max-width: 100px;
+    background-color: yellowgreen;
+    margin: auto;
+}
+
+/* tao sap pham */
+.taosp {
+    width: 40%;
+}
+
+.book-manager {
+    width: 100%;
+    min-height: 90vh;
+    margin: auto;
+}

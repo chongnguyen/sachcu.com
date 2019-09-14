@@ -17,13 +17,14 @@ head
         input.form-control(type='text', aria-describedby='emailHelp', placeholder='Search' name='q')
         input.btn.btn-danger.ml-2(type="submit", value="Search")
   .login.d-flex.align-items-center
-    a.mr-2.d-flex.align-items-center.user-container(href='/users')
-      if(!userId)
+    if(!userId)
+      a.mr-2.d-flex.align-items-center.user-container(href='/users')
         i.fas.fa-user-circle.user.mr-2
         |  &Dstrok;&abreve;ng Nh&#x1EAD;p
-      else
+    else
+      a.mr-2.d-flex.align-items-center.user-container(href='/auth/clearCookie')
         i.fas.fa-user-circle.user.mr-2
-        |  Quản lý
+        |  Đăng xuất
     .cart.p-3
       a(href='#')
         i.fas.fa-cart-arrow-down
@@ -34,17 +35,11 @@ head
       h2.bg-danger.text-white.p-3 DANH MỤC SÁCH
       ul.list-group.danhmucsach
         li.list-group-item
-          a#btn-sachvn S&aacute;ch Vi&#x1EC7;t Nam
-        li.list-group-item
-          a#btn-sachnn S&aacute;ch N&#x1B0;&#x1EDB;c Ngo&agrave;i
-        li.list-group-item
-          a#btn-sachcn S&aacute;ch Chuy&ecirc;n Ng&agrave;nh
-        li.list-group-item
-          a#btn-truyendai Truy&#x1EC7;n D&agrave;i
-        li.list-group-item
-          a#btn-truyenngan Truy&#x1EC7;n Ng&#x1EAF;n
-        li.list-group-item
-          a#btn-tieuthuyet Ti&#x1EC3;u Thuy&#x1EBF;t
+          a#btn-sachvn(href='/') Tất Cả
+        each kind in kinds
+          li.list-group-item
+            a#btn-sachvn(href='/search/kind?category=' + kind)= kind
+
   // Right
   block main
     .body-right.col-sm-9.d-flex.pt-0
@@ -71,26 +66,26 @@ head
         ul.pagination.justify-content-end
           if(active > 1)
             li.page-item
-              a.page-link(href='?page=' + (active - 1), aria-label='Previous')
+              a.page-link(href='/?page=' + (active - 1), aria-label='Previous')
                 span(aria-hidden='true') &laquo;
           else
             li.page-item.disabled
-              a.page-link(href='?page=' + (active - 1), aria-label='Previous')
+              a.page-link(href='/?page=' + (active - 1), aria-label='Previous')
                 span(aria-hidden='true') &laquo;
           each page in pages
             if(page == active)
               li.page-item.active
-                a.page-link(href='?page=' + page)= page
+                a.page-link(href='/?page=' + page)= page
             else
               li.page-item
-                a.page-link(href='?page=' + page)= page
+                a.page-link(href='/?page=' + page)= page
           if(active !== max)
             li.page-item
-              a.page-link(href='?page=' + (active + 1), aria-label='Next')
+              a.page-link(href='/?page=' + (active + 1), aria-label='Next')
                 span(aria-hidden='true') &raquo;
           else
             li.page-item.disabled
-              a.page-link(href='?page=' + (active + 1), aria-label='Next')
+              a.page-link(href='/?page=' + (active + 1), aria-label='Next')
                 span(aria-hidden='true') &raquo;
   
   block footer

@@ -6,4 +6,6 @@ var router = express.Router();
 
 router.get('/', controller.index);
 
+router.get('/kind', controller.kind);
+
 module.exports  = router;
