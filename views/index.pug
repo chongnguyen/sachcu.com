@@ -32,7 +32,7 @@ head
   // Left
   block sidebar
     .body-left.col-sm-3
-      h2.bg-danger.text-white.p-3 DANH MỤC SÁCH
+      h2.bg-danger.text-white.p-3.mb-0 DANH MỤC SÁCH
       ul.list-group.danhmucsach
         li.list-group-item
           a#btn-sachvn(href='/') Tất Cả
@@ -51,10 +51,10 @@ head
             h5.card-title= product.name
             p= product.description
             .d-flex
-              .gia-cu 900.000&dstrok;
+              .gia-cu #{(product.price + 30) / 1000}&dstrok;
               .gia-moi.ml-3 #{product.price / 1000}&dstrok; 
             .d-flex.justify-content-between.align-items-center.mt-
-              a.btn.btn-primary(href='#') Mua
+              a.btn.btn-primary(href='/customer/pay/' + product.id + "/" + product.userId) Mua
               .rate
                 i.fas.fa-star
                 i.fas.fa-star
@@ -89,7 +89,7 @@ head
                 span(aria-hidden='true') &raquo;
   
   block footer
-    footer.bg-secondary.text-white.p-3.text-center.w-100 Copyright &copy; NguyenChong-AnhQuan 2019
+    footer.bg-secondary.text-white.p-3.text-center.w-100.mt-5 Copyright &copy; NguyenChong-AnhQuan 2019
 
 script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
 script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1', crossorigin='anonymous')

@@ -12,6 +12,7 @@ var controller = require('./controllers/product.controller');
 var userRouter  = require('./routers/user.router');
 var authRouter = require('./routers/auth.router');
 var searchRouter = require('./routers/search.router');
+var customerRouter = require('./routers/customer.router');
 
 // MIDDLEWARE
 var middleware = require('./middleware/login.middleware');
@@ -36,6 +37,7 @@ app.get('/', controller.index);
 app.use('/auth', authRouter);
 app.use('/users', middleware.loginMiddleware, userRouter);
 app.use('/search', searchRouter);
+app.use('/customer', customerRouter);
 
 app.listen(port, function(){
     console.log('listen to port: ' + port)

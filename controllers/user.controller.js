@@ -1,4 +1,5 @@
 var Product = require('../model/product.model');
+var Bill = require('../model/bill.model');
 
 module.exports.index = async function(req, res){
     var products = await Product.find({userId: req.cookies.userId});
@@ -31,6 +32,20 @@ module.exports.update = async function(req, res){
     req.body.userId = req.cookies.userId;
     var x = await Product.updateOne({_id: req.params.id}, req.body);
     res.redirect('/users');
+}
+
+module.exports.bills = async function(req, res){
+    var bills = await Bill.find({users: req.cookies.userId});
+    var listProducts = [];
+    bills.forEach(function(item){
+        listProducts.push(item.products);
+    })
+    var products = await Product.find({_id: {$in: listProducts}})
+
+    res.render('users/bill', {
+        bills: bills,
+        products: products
+    })
 }
 
 module.exports.postCreate = function(req, res){

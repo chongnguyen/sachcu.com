@@ -14,7 +14,7 @@ router.get('/create', controller.create);
 
 router.get('/view/:id', controller.view);
 router.get('/delete/:id', controller.delete);
-
+router.get('/bills', controller.bills);
 
 // POST
 router.post('/create', upload.single('avatar'), createValidate.createProduct, controller.postCreate);

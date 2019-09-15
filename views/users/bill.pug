@@ -1,0 +1,38 @@
+extends ../index 
+block sidebar
+
+block main
+    .book-manager
+        h2.bg-danger.text-white.p-3.text-center.w-100 Quản Lý Đơn Hàng
+        - for(var i = 0; i < bills.length; i++)
+            ul.list-group.mb-2
+                li.list-group-item.active
+                    strong Mã đơn hàng: &nbsp;
+                    span= bills[i].id
+                li.list-group-item
+                    strong Khách hàng: &nbsp;
+                    span= bills[i].name
+                    br
+                    strong Tổng giá: &nbsp;
+                    h4.d-inline.text-danger #{bills[i].price / 1000} &dstrok;
+                    br
+                    strong Địa Chỉ: &nbsp;
+                    span= bills[i].address
+                    br
+                    strong Ghi chú: &nbsp;
+                    span= bills[i].note
+                li.list-group-item.mb-2
+                    strong.mb-2.d-block Sản phẩm: &nbsp;
+                    br
+                    img.ml-5(src= products[i].image width=100)
+                    strong.ml-5 Tên sản phẩm: &nbsp;
+                    span= products[i].name
+                    strong.ml-5 Tác giả: &nbsp;
+                    span= products[i].author
+                    strong.ml-5 Giá sản phẩm: &nbsp;
+                    span= products[i].price
+                    a(href='/users/delete/' + products[i].id).ml-5.btn.btn-primary Xử lý đơn hàng
+
+                    
+                
+                
