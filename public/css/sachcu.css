@@ -82,6 +82,14 @@ html{
     flex-wrap: wrap;
     justify-content: space-around;
 }
+.body-web .body-right .sort-item{
+    transition: all .3s;
+    font-weight: 500;
+}
+.body-web .body-right .sort-item:hover,
+.body-web .body-right .sort-item:active {
+    color: rgb(12, 85, 241) !important;
+}
 
 .body-right .card-sach {
     background-color: #fff;
@@ -92,6 +100,11 @@ html{
 
 .card-sach .card-body {
     padding: 10px;
+    text-transform: capitalize;
+}
+
+.card-sach .card-body .author {
+    font-size: .8rem;
 }
 
 .card-sach:hover {

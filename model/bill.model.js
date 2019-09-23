@@ -7,7 +7,9 @@ var billSchema = new mongoose.Schema({
     price: Number,
     products: String,
     users: String,
-    address: String
+    address: String,
+    state: Boolean,
+    date: Number
 });
 
 var Bill = mongoose.model('Bill', billSchema, 'bills');

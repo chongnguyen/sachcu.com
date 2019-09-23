@@ -7,7 +7,8 @@ var productSchema = new mongoose.Schema({
     image: String,
     userId: String,
     kind: String,
-    author: String
+    author: String,
+    date: Number
 });
 
 var Product = mongoose.model('Product', productSchema, 'products');

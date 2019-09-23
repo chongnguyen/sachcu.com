@@ -3,10 +3,12 @@ block sidebar
 block main
   .adress-container.border.mt-5.p-3.mb-5.m-auto
     h5.text-primary Th&ecirc;m 1 &Dstrok;&#x1ECB;a Ch&#x1EC9; M&#x1EDB;i
+    if(error)
+      .alert.alert-danger= error
     form(method='POST')
       p.mb-2 &Dstrok;&#x1EC3; &dstrok;&#x1EB7;t h&agrave;ng vui l&ograve;ng th&ecirc;m &dstrok;&#x1ECB;a ch&#x1EC9; nh&#x1EAD;n h&agrave;ng
-      input.form-control.mb-2(type='text', placeholder='Tên', name='name')
-      input.form-control.mb-2(type='tel', placeholder='Số điện thoại', name='phone')
+      input.form-control.mb-2(type='text', placeholder='Tên', name='name' value= value ? value.name : "")
+      input.form-control.mb-2(type='tel', placeholder='Số điện thoại', name='phone' value= value ? value.phone : "")
       .mb-2
         select.form-control(name= 'tinh')
           option(disabled select) T&#x1EC9;nh/Th&agrave;nh ph&#x1ED1;
@@ -14,11 +16,11 @@ block main
           option H&agrave; N&#x1ED9;i
           option Ninh Thu&#x1EAD;n
           option B&igrave;nh Thu&#x1EAD;n
-      input.form-control.mb-2(type='text', placeholder='Quận/Huyện', name='quanhuyen')
-      input.form-control.mb-2(type='text', placeholder='Phường/Xã', name='phuongxa')
-      input.form-control.mb-2(type='text', placeholder='Tên đường', name='duong')
+      input.form-control.mb-2(type='text', placeholder='Quận/Huyện', name='quanhuyen' value= value ? value.quanhuyen : "")
+      input.form-control.mb-2(type='text', placeholder='Phường/Xã', name='phuongxa' value= value ? value.phuongxa : "")
+      input.form-control.mb-2(type='text', placeholder='Tên đường', name='duong' value= value ? value.duong : "")
       .form-group
         label(for='exampleFormControlTextarea1') Ghi ch&uacute;
-        textarea#exampleFormControlTextarea1.form-control(rows='3' name='note')
+        textarea#exampleFormControlTextarea1.form-control(rows='3' name='note' value= value ? value.note : "")
       .d-flex.justify-content-center
         button.btn.btn-primary(type='submit') Ho&agrave;n Th&agrave;nh

@@ -34,7 +34,7 @@ module.exports.registerValidate = async function(req, res, next){
     var user = await User.findOne({email: req.body.email});
 
     if(!req.body.name || !req.body.email || !req.body.pass || !req.body.confirm){
-        errors.push("Không được để trống");
+        errors.push("Không được để trống trường");
         res.render('auth/register', {
             errors: errors,
             value: req.body
@@ -65,7 +65,28 @@ module.exports.registerValidate = async function(req, res, next){
 module.exports.createProduct = function(req, res, next){
     if(!req.body.name || !req.body.author || !req.body.price){
         res.render('users/create', {
-            error: "Không được bỏ trống",
+            error: "Không được bỏ trống trường",
+            value: req.body
+        })
+        return;
+    }
+
+    if(!(req.body.price / 10)){
+        res.render('users/create', {
+            error: "Nhập sai định dạng giá.",
+            value: req.body
+        })
+        return;
+    }
+    
+    next();
+}
+
+module.exports.pay = function(req, res, next){
+    if(!req.body.name || !req.body.phone || !req.body.phuongxa 
+        || !req.body.quanhuyen || !req.body.duong){
+        res.render('customer/pay', {
+            error: "Không được bỏ trống trường",
             value: req.body
         })
         return;

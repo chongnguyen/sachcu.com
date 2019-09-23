@@ -4,11 +4,22 @@ block sidebar
 block main
     .book-manager
         h2.bg-danger.text-white.p-3.text-center.w-100 Quản Lý Đơn Hàng
+        .sort-products.w-100.m-3
+            strong Trạng thái:
+            a.m-3.text-secondary.sort-item(href='/users/bills') Chưa xủ lý
+            a.m-3.text-secondary.sort-item(href='/users/bills/done') Đã xử lý
+        if(bills)
+            p.m-3 Tìm thấy #{bills.length} đơn hàng.
         - for(var i = 0; i < bills.length; i++)
             ul.list-group.mb-2
-                li.list-group-item.active
-                    strong Mã đơn hàng: &nbsp;
-                    span= bills[i].id
+                if(done)
+                    li.list-group-item.bg-success.text-white
+                        strong Mã đơn hàng: &nbsp;
+                        span= bills[i].id
+                else
+                    li.list-group-item.active
+                        strong Mã đơn hàng: &nbsp;
+                        span= bills[i].id
                 li.list-group-item
                     strong Khách hàng: &nbsp;
                     span= bills[i].name
@@ -31,7 +42,8 @@ block main
                     span= products[i].author
                     strong.ml-5 Giá sản phẩm: &nbsp;
                     span= products[i].price
-                    a(href='/users/delete/' + products[i].id).ml-5.btn.btn-primary Xử lý đơn hàng
+                    if(!done)
+                        a(href='/users/bills/' + bills[i].id).ml-5.btn.btn-primary Xử lý đơn hàng
 
                     
                 
