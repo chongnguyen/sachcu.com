@@ -3,7 +3,7 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/book-store', {useNewUrlParser: true});
+mongoose.connect('mongodb://localhost/book-store-test', {useNewUrlParser: true});
 
 // CONTROLLER
 var controller = require('./controllers/product.controller');

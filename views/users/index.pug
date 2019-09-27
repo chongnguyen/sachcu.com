@@ -2,33 +2,36 @@ extends ../index
 block sidebar
 
 block main
-    .book-manager
-        h2.bg-danger.text-white.p-3.text-center.w-100 Quản Lý Sách
-        .create-book.m-auto.p-3
-            a.btn.btn-primary(href='/users/create') Thêm sách
-            a.btn.btn-primary.ml-3(href='/users/bills') Quản lý đơn hàng
-        .table-container
-            table.table
-                thead
-                    tr
-                        th
-                        th(scope='col') Tên sản phẩm
-                        th(scope='col') Tác giả
-                        th(scope='col') Giá
-                        th(scope='col') Chỉnh sửa
-                        th
-                tbody
-                    each product in products
+    .body-web-user.w-100.m-auto.row
+        .book-manager.w-100
+            h2.text-white.p-3.text-center.w-100.bgcam Qu&#x1EA3;n L&yacute; S&aacute;ch
+            .create-book.m-auto.p-3.d-flex
+                a.btn-mua.w-25(href='/users/create') Th&ecirc;m s&aacute;ch
+                a.btn-mua.ml-3.w-25(href='/users/bills') Qu&#x1EA3;n l&yacute; &dstrok;&#x1A1;n h&agrave;ng
+            .table-container
+                table.table.table-hover
+                    thead.thead-dark
                         tr
-                            td
-                                .image-container
-                                    img.image(src= product.image alt='sach')
-                            td= product.name
-                            td= product.author
-                            td= product.price
-                            td
-                                a(href='/users/view/' + product.id) eidt &rarr;
-                            td 
-                                a(href='/users/delete/' + product.id).btn.btn-secondary Xóa
-                
-                
+                            th(scope='col') H&igrave;nh &#x1EA3;nh
+                            th(scope='col') T&ecirc;n s&#x1EA3;n ph&#x1EA9;m
+                            th(scope='col') T&aacute;c gi&#x1EA3;
+                            th(scope='col') Gi&aacute;
+                            th(scope='col') Ch&#x1EC9;nh s&#x1EED;a
+                            th(scope='col') X&oacute;a
+                    tbody
+                        each product in products
+                            tr
+                                td
+                                    .image-container.margin-auto
+                                        img.image.w-50(src= product.image, alt='sach')
+                                td= product.name
+                                td= product.author
+                                td= product.price
+                                td
+                                    a(href='/users/view/' + product.id)
+                                        | edit 
+                                        i.fas.fa-edit
+                                td
+                                    a.btn-mua.margin-auto(href='/users/delete/' + product.id) X&oacute;a
+                        
+block footer

@@ -1,8 +1,11 @@
 /* header */
-* {
-    margin: 0;
+*{
     padding: 0;
-    box-sizing: border-box;
+    margin: 0;
+}
+
+.bgcam{
+    background-image: linear-gradient(to right, #3498db ,#9b59b6);
 }
 
 html{
@@ -10,7 +13,7 @@ html{
 }
 
 .header{
-    background-color: #adadad;
+    background-image: linear-gradient(to right, #3498db ,#9b59b6);
     width: 100%;
     position:  fixed;
     top: 0;
@@ -18,160 +21,332 @@ html{
     z-index: 10;
 }
 .logo{
-    width: 25%;
+    width: 20%;
     text-align: center;
     padding: 0 20px;
 }
 
-.logo a {
-    color: red;
-    font-size: 3rem;
+
+.logo span{
+    font-size: 40px;
     font-weight: 700;
-    text-shadow: 3px 3px 1px #fff, -3px -3px 1px #fff, 
-    3px -3px 1px #fff, -3px 3px 1px #fff;
+    color: red;
+    text-shadow: 2px 2px 1px #fff, -2px 2px 1px #fff, 2px -2px 1px #fff, -2px -2px 1px #fff;
 }
 
-.logo a:hover,
-.logo a:active {
-    color: red;
+.logo a:hover{
     text-decoration: none;
 }
-
+.user-container {
+    transition: all .3s;
+}
 .user-container:hover{
     text-decoration: none;
+    color: black;
 }
+
+.menu {
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+
+.menu div a{
+    color: white;
+    padding-right: 20px;
+}
+
 
 .search-bar{
-    width: 50%;
-}
-
-.login{
-    width: 20%;
+    width: 30%;
 }
 
 .login a{
-    color: #000000;
+    color: white;
 }
-
-.login a:hover {
-    color: rgb(1, 1, 175);
-}
-
-.user{
-    font-size: 40px ;
-}
-
-.cart{
+.user {
     font-size: 40px;
 }
 
-.cart a:hover {
-    color: rgb(172, 1, 1);
+.cart{
+    font-size: 20px;
+    transition: all .3s;
 }
+
+.cart:hover{
+    color: black;
+}
+
+
 
 /* body */
 
+.body-left{
+    width: 25%;
+    height: fit-content;
+    position: sticky;
+    top: 70px;
+}
+
+.body-right{
+    width: 75%;
+}
+
 .body-web{
+    width: 100%;
     margin-top: 130px;
     padding: 0 20px;
 }
 
-.body-web .body-right {
-    background-color: #f5f5f5;
-    padding: 10px 0px;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-.body-web .body-right .sort-item{
-    transition: all .3s;
-    font-weight: 500;
-}
-.body-web .body-right .sort-item:hover,
-.body-web .body-right .sort-item:active {
-    color: rgb(12, 85, 241) !important;
+.title-web{
+    width: 100%;
+    font-size: 27px;
+    background-image: linear-gradient(to right, #3498db ,#9b59b6);
+    padding: 10px 25px;
+    color: white;
 }
 
-.body-right .card-sach {
-    background-color: #fff;
-    margin: 5px;
-    transition: all .3s;
-    width: 24%;
-}
-
-.card-sach .card-body {
-    padding: 10px;
-    text-transform: capitalize;
-}
-
-.card-sach .card-body .author {
-    font-size: .8rem;
-}
-
-.card-sach:hover {
-    transform: translateY(-2px);
-    box-shadow: 1px 1px 5px #333;
-    border-radius: 5px;
-}
-
-.body-web .body-left {
-    height: fit-content;
-    position: sticky;
-    top: 100px;
-}
+/*left*/
 
 .list-group-item a{
     cursor: pointer;
 }
 
-.danhmucsach li{
+.li-parent{
     font-weight: 500;
+    padding: 0 !important;
+    transition: all .3s;
+}
+
+.li-parent a{
+    color: black;
+    padding: 15px 30px;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    transition: all .3s;
+}
+
+.li-parent:hover a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.li-parent:hover{
+    background-image: linear-gradient(to right, #3498db ,#9b59b6);
+}
+
+.li-parent:first-child{
+    border-radius: 0 !important ;
+}
+
+/*right*/
+
+.card-sach{
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(80, 79, 79, 0.096);
+    transition: all .3s;
+}
+
+.card-sach:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 0px 10px rgba(80, 79, 79, 0.329);
+}
+
+.img{
+    width: 100%;
+    height: 250px;
+}
+
+.img img{
+    width: 100%;
+    max-height: 250px;    
+}
+
+.tensach{
+    font-size: 0.9rem;
 }
 
 .gia-moi{
-    font-size: 1.2rem;
+    font-size: 0.8rem;
     font-weight: 500;
 }
 
 .gia-cu{
-    font-size: 1.2rem;
+    font-size: 0.8rem;
     text-decoration: line-through;
     color: gray;
 }
 
 .rate{
     color: #fcd149;
+    font-size: 0.6rem;
 }
 
-/* login */
-.login-warraper{
-    width: 30%;
-    background-color: #f5f5f5;
+.btn-mua{
+    height: 40px;
+    width: 70px;
     border-radius: 10px;
-    padding: 50px 20px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to right, #3498db ,#9b59b6);
+    background-size: 200%;
+    transition: 0.5s;
 }
 
-/* table manager book */
-.table-container, .create-book {
-    margin: 20px;
+.btn-mua:hover{
+    text-decoration: none;
+    color: white;
+    background-position: right;
 }
 
-table{
+.card-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 20px 10px;
+}
+
+.card-body h5{
+    height: 40px;
+}
+
+/*user*/
+
+.image-container{
+    width: 100px;
+}
+
+.image-container img{
+    width: 100%;
+}
+
+.table-custom{
     text-align: center;
 }
 
-.image{
-    max-width: 100px;
-    background-color: yellowgreen;
+.margin-auto{
     margin: auto;
 }
 
-/* tao sap pham */
-.taosp {
-    width: 40%;
+.mauchinh{
+    color: #3498db;
 }
 
-.book-manager {
+/***********************************/
+
+/* css login */
+
+.login-warraper{
+    width: 30%;
+    margin: auto;
+    background-image: linear-gradient(to right, #3498db ,#9b59b6);
+    border-radius: 20px;
+    margin-top: 50px;
+    padding: 50px 20px;
+}
+
+/* header */
+
+.body-dangnhap{
+    padding: 0 10%;
+    background-image: linear-gradient(to right, #3498db ,#9b59b6);
+}
+
+.btn-mua-1{
+    color: black;
+    padding: 10px 50px;
+    background-color: white;
+    background-size: 200%;
+    border: 2px solid #fff;
+    border-radius: 20px;
+    transition: all .3s;
+    text-transform: capitalize;
+}
+
+.btn-mua-1:hover{
+    background-color: transparent;
+    color: #fff;
+}
+
+.btn-dangky-link{
+    color: #0056b3;
+}
+
+/*adress*/
+
+.adress-container{
+    background-image: linear-gradient(to right, #3498db ,#9b59b6);
+    width: 40%;
+    margin: auto;
+    margin-top: 120px;
+    padding: 50px 30px;
+    border-radius: 10px;
+}
+
+.mauchinh{
+    color: #3498db;
+}
+
+/****************************************/
+
+/* css tạo sp */
+.taosp{
+    width: 40%;
+    margin: 0 auto;
+    background-image: linear-gradient(to right, #3498db ,#9b59b6);
+    border-radius: 10px;
+    margin-top: 125px;
+    padding: 50px 30px;
+}
+
+
+.btn-mua-2{
+    height: 40px;
+    width: 70px;
+    border-radius: 10px;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to right, #3498db ,#9b59b6);
+    background-size: 200%;
+    transition: 0.5s;
+    padding: 10px 20px;
+}
+
+.btn-mua-2:hover{
+    text-decoration: none;
+    color: white;
+    background-position: right;
+}
+
+.mauchinh{
+    color: #3498db;
+}
+
+
+
+/*quan ly*/
+
+
+.book-manager{
     width: 100%;
     min-height: 90vh;
-    margin: auto;
+}
+
+.mauxanh{
+    color: #3498db !important;
+}
+
+.mautim{
+    color: #9b59b6 !important;
+}
+
+.bgmauxanh{
+    background-color: #3498db !important;
+}
+
+.bgmautim{
+    background-color: #9b59b6 !important;
 }

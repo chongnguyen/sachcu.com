@@ -4,7 +4,7 @@ block sidebar
 
 block main
     .login-warraper.border.m-auto
-        h5.text-primary &Dstrok;&abreve;ng nh&#x1EAD;p
+        h5.text-white &Dstrok;&abreve;ng Ký
         if(errors)
             each error in errors
                 .alert.alert-danger= error
@@ -21,8 +21,8 @@ block main
             .form-group
                 label(for='confirm')  Nhập lại M&#x1EAD;t kh&#x1EA9;u:
                 input#confirm.form-control(type='password' placeholder='Confirm' name='confirm')
-            .d-flex.justify-content-center.mt-3
-                button.btn.btn-primary(type='submit') Đăng Ký
+            .d-flex.justify-content-center
+                button.btn-mua-1(type='submit') Đăng Ký
 
 block footer
 

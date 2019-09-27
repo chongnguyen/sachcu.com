@@ -12,7 +12,8 @@ module.exports.index = async function(req, res){
     res.render('index', {
         products: matchedProducts,
         pages: [],
-        kinds: []
+        kinds: [],
+        value: q
     })
 }
 

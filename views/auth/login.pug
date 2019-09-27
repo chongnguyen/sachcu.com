@@ -3,21 +3,24 @@ extends ../index
 block sidebar
 
 block main
-    .login-warraper.border.m-auto
-        h5.text-primary &Dstrok;&abreve;ng nh&#x1EAD;p
+    .login-warraper.border
+        h5.text-white &Dstrok;&abreve;ng nh&#x1EAD;p
         if(errors)
             each error in errors
                 .alert.alert-danger(role="alert")= error
-        form(method='POST')
+        form#formdangnhap(method='POST')
             .form-group
-                label(for='exampleInputEmail1') &Dstrok;&#x1ECB;a ch&#x1EC9; Email:
-                input#exampleInputEmail1.form-control(type='email' name='email' placeholder='Email' value= value ? value.email : "")
+                label(for='username') T&agrave;i kho&#x1EA3;n
+                input#username.form-control(type='text', placeholder='Username', name='email', value= value ? value.email : "")
             .form-group
-                label(for='exampleInputPassword1') M&#x1EAD;t kh&#x1EA9;u:
-                input#exampleInputPassword1.form-control(type='password' name='pass' placeholder='Password' value= value ? value.pass : "")
-                a.mt-2.ml-1.d-block(href="/auth/register") Đăng ký &rarr;
-            .d-flex.justify-content-center.mt-3
-                button.btn.btn-primary(type='submit') &Dstrok;&abreve;ng nh&#x1EAD;p
+                label(for='password') M&#x1EAD;t kh&#x1EA9;u
+                input#password.form-control(type='password', placeholder='Password', name='pass', value= value ? value.pass : "")
+            .d-flex.justify-content-center
+                button#dangnhap.btn-mua-1(type='submit') &Dstrok;&abreve;ng Nh&#x1EAD;p
+            p.m-0.mt-3
+                | Ch&#x1B0;a c&oacute; t&agrave;i kho&#x1EA3;n? 
+                a.text-white.float-right(href='/auth/register') &Dstrok;&abreve;ng k&yacute; &rarr;
+
+
 
 block footer
-

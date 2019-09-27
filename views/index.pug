@@ -4,18 +4,25 @@ head
   meta(name='viewport', content='width=device-width, initial-scale=1.0')
   meta(http-equiv='X-UA-Compatible', content='ie=edge')
   script(src='https://kit.fontawesome.com/b32e5ce0da.js')
-  link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T', crossorigin='anonymous')
   link(rel='stylesheet', href='/css/sachcu.css')
+  link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T', crossorigin='anonymous')
   title Sach Cu
-// Header
-.d-flex.justify-content-between.align-items-center.header.p-1.border-bottom
+// HEAD
+.d-flex.justify-content-between.align-items-center.header.p-1
   .logo
-    a(href='/') SachCu.Com
+    a(href='/')
+      span SACHCU.COM
+  .menu.d-flex
+    div
+      a(href='/') Trang Ch&#x1EE7;
+    div
+      a(href='/users') T&agrave;i Kho&#x1EA3;n C&#x1EE7;a T&ocirc;i
   .search-bar
     form(action='/search' method="get")
       .form-group.d-flex.m-0
-        input.form-control(type='text', aria-describedby='emailHelp', placeholder='Search' name='q')
-        input.btn.btn-danger.ml-2(type="submit", value="Search")
+        input#seach-top.form-control(type='text', placeholder='Search', name='q' value= value)
+        input.btn.btn-outline-light.ml-2(type='submit' value= 'search')
+          //- i.fas.fa-search
   .login.d-flex.align-items-center
     if(!userId)
       a.mr-2.d-flex.align-items-center.user-container(href='/users')
@@ -25,49 +32,51 @@ head
       a.mr-2.d-flex.align-items-center.user-container(href='/auth/clearCookie')
         i.fas.fa-user-circle.user.mr-2
         |  Đăng xuất
-    .cart.p-3
-      a(href='#')
+    .p-3
+      a.cart(href='#')
         i.fas.fa-cart-arrow-down
-.d-flex.body-web.row
+// BODY
+.d-flex.body-web
   // Left
   block sidebar
-    .body-left.col-sm-3
-      h2.bg-danger.text-white.p-3.mb-0 DANH MỤC SÁCH
+    .body-left.mr-2
+      .title-web Th&#x1EC3; Lo&#x1EA1;i
       ul.list-group.danhmucsach
-        li.list-group-item
+        li.list-group-item.li-parent
           a#btn-sachvn(href='/') Tất Cả
         each kind in kinds
-          li.list-group-item
+          li.list-group-item.li-parent
             a#btn-sachvn(href='/search/kind?category=' + kind)= kind
-
   // Right
   block main
-    .body-right.col-sm-9.d-flex.pt-0
-      h2.bg-danger.text-white.p-3.w-100.text-center SÁCH BÁN CHẠY
+    .body-right
+      .justify-content-between.align-items-center.bgcam
+        .title-web T&#x1EA5;t C&#x1EA3; S&aacute;ch
       .sort-products.w-100.m-3
         strong Ưu tiên xem:
+        a.m-3.text-secondary.sort-item(href='/') Mới nhất
         a.m-3.text-secondary.sort-item(href='/order/name') Theo tên
         a.m-3.text-secondary.sort-item(href='/order/unprice') Giá cao
         a.m-3.text-secondary.sort-item(href='/order/price') Giá thấp
-      each product in products
-        .card-sach
-          img.card-img-top.p-1(src= product.image, alt='...')
-          .card-body
-            h5.card-title= product.name
-            p.font-weight-light.font-italic.author= product.author
-            .d-flex
-              - var price = product.price / 1000
-              .gia-cu #{(price*1.2).toFixed(3)}&dstrok;
-              .gia-moi.ml-3 #{price.toFixed(3)}&dstrok; 
-            .d-flex.justify-content-between.align-items-center.mt-
-              a.btn.btn-primary(href='/customer/pay/' + product.id + "/" + product.userId) Mua
-              .rate
-                i.fas.fa-star
-                i.fas.fa-star
-                i.fas.fa-star
-                i.fas.fa-star
-                i.fas.fa-star-half-alt
-
+      .card-container
+        each product in products
+          .card-sach
+            .img
+              img.card-img-top.p-2(src= product.image, alt='...')
+            .card-body
+              h5.tensach= product.name
+              .d-flex.justify-content-between
+                - var price = product.price / 1000
+                .gia-cu #{(price*1.2).toFixed(3)}&dstrok;
+                .gia-moi.ml-3 #{price.toFixed(3)}&dstrok; 
+              .d-flex.justify-content-between.align-items-center.mt-3
+                a.btn-mua(href='/customer/pay/' + product.id + "/" + product.userId) Mua
+                .rate
+                  i.fas.fa-star
+                  i.fas.fa-star
+                  i.fas.fa-star
+                  i.fas.fa-star
+                  i.fas.fa-star-half-alt
       nav.mt-3.p-3.w-100(aria-label='Page navigation example')
         ul.pagination.justify-content-end
           if(active > 1)
@@ -93,11 +102,16 @@ head
             li.page-item.disabled
               a.page-link(href='/?page=' + (active + 1), aria-label='Next')
                 span(aria-hidden='true') &raquo;
-  
-  block footer
-    footer.bg-secondary.text-white.p-3.text-center.w-100.mt-5 Copyright &copy; NguyenChong-AnhQuan 2019
-
-script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
-script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1', crossorigin='anonymous')
-script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM', crossorigin='anonymous')
-script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
+// FOOTER
+block footer
+  .footer.mt-5.border-bottom.border-top.p-3.text-center
+    div
+      | &#x24B8; 2019 SachCu.Com by 
+      a(href='https://www.facebook.com/pipo.abc', target='_blank') Anh Qu&acirc;n
+      |  &amp; 
+      a(href='https://www.facebook.com/nguyen.chong.98', target='_blank') &Dstrok;&#x1EE9;c Tr&#x1ECD;ng
+//- script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
+//- script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1', crossorigin='anonymous')
+//- script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js', integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM', crossorigin='anonymous')
+//- script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
+//- script(src='js/sachcu.js')
